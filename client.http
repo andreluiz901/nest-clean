@@ -1,0 +1,21 @@
+@baseUrl = http://localhost:3000
+
+# @name create_account
+POST {{baseUrl}}/accounts
+Content-Type: application/json
+
+{
+  "name": "Valid name",
+  "email": "valid_mail@mail.com",
+  "password": "validPassword@123456"
+}
+
+##
+# @name create_account
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+  "email": "valid_mail@mail.com",
+  "password": "validPassword@123456"
+}
