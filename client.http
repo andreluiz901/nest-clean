@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ###
-# @name create_account
+# @name authenthicate
 POST {{baseUrl}}/sessions
 Content-Type: application/json
 
