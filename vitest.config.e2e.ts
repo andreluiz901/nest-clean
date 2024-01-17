@@ -12,6 +12,7 @@ export default defineConfig({
     },
     root: './',
     exclude: [...configDefaults.exclude, '**/data/pg/**'],
+    setupFiles: ['./test/setup-e2e.ts'],
   },
   resolve: {
     alias: {
