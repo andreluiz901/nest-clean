@@ -7,6 +7,7 @@ export default defineConfig({
     alias: {
       '@src': './src',
       '@test': './test',
+      '@/*': './src/*',
     },
     root: './',
     exclude: [...configDefaults.exclude, '**/data/pg/**'],
@@ -15,6 +16,7 @@ export default defineConfig({
     alias: {
       '@src': './src',
       '@test': './test',
+      '@/*': './src/*',
     },
   },
   plugins: [
