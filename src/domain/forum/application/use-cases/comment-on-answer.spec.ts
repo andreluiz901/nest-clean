@@ -33,7 +33,6 @@ describe('Comment on answer', () => {
       answerId: answer.id.toString(),
       content: 'comentario teste',
     })
-    console.log(inMemoryAnswerCommentsRepository.items)
     expect(inMemoryAnswerCommentsRepository.items[0].content).toEqual(
       'comentario teste',
     )
