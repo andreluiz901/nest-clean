@@ -26,7 +26,6 @@ export class DeleteQuestionCommentUseCase {
   }: DeleteQuestionCommentUseCaseRequest): Promise<DeleteQuestionCommentUseCaseResponse> {
     const questionComment =
       await this.questionCommentsRepository.findById(questionCommentId)
-    console.log('questionComment', questionComment)
     if (!questionComment) return left(new ResouceNotFoundError())
 
     if (questionComment.authorId.toString() !== authorId)
