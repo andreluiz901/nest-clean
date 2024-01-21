@@ -17,7 +17,7 @@ export abstract class Entity<Props> {
   public equals(entity: Entity<any>) {
     if (entity === this) return true
 
-    if (entity.id === this.id) return true
+    if (entity.id === this._id) return true
 
     return false
   }
