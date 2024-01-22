@@ -7,8 +7,8 @@ import {
 } from '@nestjs/common'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import { z } from 'zod'
-import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-quetion-coments'
 import { CommentPresenter } from '../presenters/comment-presenter'
+import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-question-comments'
 
 const pageQueryParamSchema = z
   .string()
