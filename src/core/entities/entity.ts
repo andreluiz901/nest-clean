@@ -1,20 +1,19 @@
 import { UniqueEntityId } from './unique-entity-id'
 
-// eslint-disable-next-line
 export abstract class Entity<Props> {
   private _id: UniqueEntityId
-  protected props: any
+  protected props: Props
 
   get id() {
     return this._id
   }
 
-  protected constructor(props: any, id?: UniqueEntityId) {
+  protected constructor(props: Props, id?: UniqueEntityId) {
     this.props = props
     this._id = id ?? new UniqueEntityId()
   }
 
-  public equals(entity: Entity<any>) {
+  public equals(entity: Entity<Props>) {
     if (entity === this) return true
 
     if (entity.id === this._id) return true
