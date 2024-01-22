@@ -1,5 +1,5 @@
 import { Attachment } from '@/domain/forum/enterprise/entities/attachment'
-import { Attachment as PrismaAttachment, Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 
 export class PrismaAttachmentMapper {
   static toPrisma(

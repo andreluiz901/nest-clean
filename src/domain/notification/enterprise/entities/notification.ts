@@ -16,7 +16,7 @@ export class Notification extends Entity<NotificationProps> {
   }
 
   get titlet() {
-    return this.props.titlet
+    return this.props.title
   }
 
   get content() {
