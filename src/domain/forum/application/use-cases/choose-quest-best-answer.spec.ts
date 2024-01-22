@@ -7,9 +7,14 @@ import { makeQuestion } from 'test/factories/make-question'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
 import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory-answer-attachments-repository'
+import { InMemoryAttachmentRepository } from 'test/repositories/in-memory-attachments-repository'
+import { InMemoryStudentRepository } from 'test/repositories/in-memory-students-repository'
 
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryAnswerAttachmentRepository: InMemoryAnswerAttachmentsRepository
+
+let inMemoryAttachmentsRepository: InMemoryAttachmentRepository
+let inMemoryStudentsRepository: InMemoryStudentRepository
 
 let inMemoryQuestionRepository: InMemoryQuestionRepository
 let inMemoryAnswerRepository: InMemoryAnswersRepository
@@ -21,8 +26,12 @@ describe('Choose question Best answer', () => {
       new InMemoryQuestionAttachmentsRepository()
     inMemoryAnswerAttachmentRepository =
       new InMemoryAnswerAttachmentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentRepository()
+    inMemoryStudentsRepository = new InMemoryStudentRepository()
     inMemoryQuestionRepository = new InMemoryQuestionRepository(
       inMemoryQuestionAttachmentRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
     inMemoryAnswerRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentRepository,
