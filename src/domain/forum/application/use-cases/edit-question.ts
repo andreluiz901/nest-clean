@@ -39,7 +39,7 @@ export class EditQuestionUseCase {
     attachmentsIds,
   }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
     const question = await this.questionRepository.findById(questionId)
-
+    console.log('question', question)
     if (!question) {
       return left(new ResouceNotFoundError())
     }
