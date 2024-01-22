@@ -76,7 +76,7 @@ describe('Edit question (e2e)', () => {
         content: 'New content',
         attachments: [attachment1.id.toString(), attachment3.id.toString()],
       })
-    console.log('response', response)
+
     expect(response.statusCode).toBe(204)
 
     const questionOnDatabase = await prisma.question.findFirst({
