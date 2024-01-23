@@ -19,9 +19,10 @@ model User {
   password String
   role     UserRole @default(STUDENT)
 
-  questions Question[]
-  answers   Answer[]
-  Comment   Comment[]
+  questions     Question[]
+  answers       Answer[]
+  comments      Comment[]
+  notifications Notification[]
 
   @@map("users")
 }
@@ -36,11 +37,12 @@ model Question {
   authorId     String    @map("author_id")
   bestAnswerId String?   @unique @map("best_answer_id")
 
-  author      User         @relation(fields: [authorId], references: [id])
-  bestAnswer  Answer?      @relation("bestAnswer", fields: [bestAnswerId], references: [id])
-  answers     Answer[]
-  comments    Comment[]
-  attachments Attachment[]
+  author       User           @relation(fields: [authorId], references: [id])
+  bestAnswer   Answer?        @relation("bestAnswer", fields: [bestAnswerId], references: [id])
+  answers      Answer[]
+  comments     Comment[]
+  attachments  Attachment[]
+  Notification Notification[]
 
   @@map("questions")
 }
@@ -53,11 +55,12 @@ model Answer {
   authorId   String    @map("author_id")
   questionId String    @map("question_id")
 
-  author       User         @relation(fields: [authorId], references: [id])
-  bestAnswerOn Question?    @relation("bestAnswer")
-  question     Question     @relation(fields: [questionId], references: [id])
+  author       User           @relation(fields: [authorId], references: [id])
+  bestAnswerOn Question?      @relation("bestAnswer")
+  question     Question       @relation(fields: [questionId], references: [id])
   comments     Comment[]
   attachments  Attachment[]
+  Notification Notification[]
 
   @@map("answers")
 }
@@ -89,4 +92,22 @@ model Attachment {
   answer   Answer?   @relation(fields: [answerId], references: [id])
 
   @@map("attachments")
+}
+
+model Notification {
+  id          String    @id @default(uuid())
+  recipientId String    @map("recipient_id")
+  title       String
+  content     String
+  readAt      DateTime? @map("read_at")
+  createdAt   DateTime  @map("created_at")
+
+  recipient User @relation(fields: [recipientId], references: [id])
+
+  question   Question? @relation(fields: [questionId], references: [id])
+  questionId String?
+  answer     Answer?   @relation(fields: [answerId], references: [id])
+  answerId   String?
+
+  @@map("notifications")
 }
